@@ -35,9 +35,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="24sp"
             tools:onClick="OnCallBalance"
-            android:paddingLeft="10px"
-            android:paddingTop="14px"
-            android:phoneNumber="true"
+            android:paddingLeft="10sp"
+            android:paddingTop="10sp"
             android:textStyle="normal|bold"
             android:textAlignment="center" />
     </LinearLayout>
