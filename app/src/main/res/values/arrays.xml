@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Banks">
+      <item>SBI</item>
+        <item>ICICI</item>
+        <item>HDFC</item>
+        <item>AXIS</item>
+        <item>CITI</item>
+        <item>CUB</item>
+        <item>IOB</item>
+        <item>IB</item>
+        <item>MCC</item>
+        <item>KVB</item>
+        <item>KOTAK</item>
+    </string-array>
+</resources>
