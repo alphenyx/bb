@@ -21,6 +21,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.yoyk.bankbuddy.model.BankList_Model;
 
 import static com.yoyk.bankbuddy.MyBankFragment.EXTRA_MESSAGE;
@@ -30,6 +32,8 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
     SearchView mSearchView=null;
     ListView mResultsView=null;
     BankListAdaptor mBankListAdaptor=null;
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,10 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
                 startActivity(intent);
             }
         });
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
 
     }
     private void setupSearchView() {
@@ -84,16 +92,45 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         return super.onOptionsItemSelected(item);
     }
     public boolean onQueryTextChange(String newText) {
+        View myView=findViewById(R.id.mybank);
+        View allView=findViewById(R.id.otherbanks);
         if (TextUtils.isEmpty(newText)) {
             mBankListAdaptor.ResetFilter();
             mResultsView.clearTextFilter();
             mResultsView.setVisibility(View.INVISIBLE);
-
+            myView.setVisibility(View.VISIBLE);
+            allView.setVisibility(View.VISIBLE);
         } else {
             mResultsView.setFilterText(newText.toString());
             mResultsView.setVisibility(View.VISIBLE);
+            myView.setVisibility(View.INVISIBLE);
+            allView.setVisibility(View.INVISIBLE);
         }
         return true;
+    }
+
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 
     public boolean onQueryTextSubmit(String query) {
