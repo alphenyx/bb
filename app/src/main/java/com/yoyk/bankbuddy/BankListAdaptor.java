@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.CursorAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.yoyk.bankbuddy.model.BankList_Model;
 
@@ -55,12 +58,23 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
         ViewHolder viewHolder = new ViewHolder(view);
         int drawableID = mContext.getResources().getIdentifier("sbi_logo", "drawable", mContext.getPackageName());
         viewHolder.iconView.setImageResource(drawableID);
-
+        viewHolder.favButtonView.setChecked(mBankList_models[position].getBank_fav().contentEquals("1"));
+        viewHolder.favButtonView.setTag(mBankList_models[position]);
         viewHolder.nameView.setText(mBankList_models[position].getBank_name());
+
+        viewHolder.favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                BankList_Model m=(BankList_Model)buttonView.getTag();
+                if (isChecked) {
+                    Toast.makeText(mContext, "clicked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "unchecked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         view.setTag(viewHolder);
-
         return view;
-
     }
     public void ResetFilter()
     {
@@ -75,9 +89,11 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
     public static class ViewHolder{
         public final ImageView iconView;
         public final TextView nameView;
+        public final ToggleButton favButtonView;
         public ViewHolder(View view){
             iconView = (ImageView) view.findViewById(R.id.list_item_icon);
             nameView = (TextView) view.findViewById(R.id.list_item_textview);
+            favButtonView=(ToggleButton) view.findViewById(R.id.fav);
         }
     }
     private static final int VIEW_TYPE_BANK = 1;

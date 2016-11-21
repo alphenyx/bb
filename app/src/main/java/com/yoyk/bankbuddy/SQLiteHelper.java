@@ -18,7 +18,7 @@ public class SQLiteHelper extends SQLiteOpenHelper implements DatabaseConstants 
     public static final int DB_VERSION = 4;
 
     public SQLiteHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context, "bank.db", null, DB_VERSION);
         getWritableDatabase();
     }
 
@@ -62,7 +62,7 @@ public class SQLiteHelper extends SQLiteOpenHelper implements DatabaseConstants 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BANK);
         onCreate(db);
     }
-
+/*
     public BankList_Model getData(String id)
     {
         return Convert(getDataCursor(id));
@@ -108,6 +108,6 @@ public class SQLiteHelper extends SQLiteOpenHelper implements DatabaseConstants 
         BankList_Model model=new BankList_Model(bid,nam,inquiry,care,fav,logo);
         return model;
     }
-
+*/
 }
 

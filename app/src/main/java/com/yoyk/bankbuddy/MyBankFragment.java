@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.yoyk.bankbuddy.model.BankList_Model;
 import com.yoyk.bankbuddy.model.Fragment_Model;
@@ -57,7 +59,6 @@ public class MyBankFragment extends Fragment  {
         mListView = (ListView) rootView.findViewById(R.id.listbank);
         mListView.setAdapter(mBankListAdaptor);
         setListViewHeightBasedOnChildren(mListView);
-
         final Intent intent = new Intent(this.getActivity(),BankCard.class);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){

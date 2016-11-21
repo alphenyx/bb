@@ -4,6 +4,7 @@ import android.app.Application;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.yoyk.bankbuddy.Database.Database.AppData;
 import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
 import com.yoyk.bankbuddy.model.BankList_Model;
 import com.yoyk.bankbuddy.model.Fragment_Model;
@@ -14,12 +15,14 @@ import java.util.Arrays;
 public class MyApplication extends Application {
 	private static final String TAG = MyApplication.class.getSimpleName(); 
 	private static SQLiteHelper _dbHelper;
-
+	private static AppData _data;
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		Log.d(TAG, "onCreate my app");
 	    _dbHelper = new SQLiteHelper(this);
+		_data=new AppData(this.getApplicationContext());
+
 	}
 	public static BankList_Model[] getBankList()
 	{
@@ -28,7 +31,7 @@ public class MyApplication extends Application {
 				new BankList_Model("2","ICICI","adf","asdf","sdf","dfd"),
 				new BankList_Model("3","HDFC","adf","asdf","sdf","dfd")
 		};
-		Object[] oarray=_dbHelper.getAllBanks().toArray();
+		Object[] oarray=_data.getAllBanks().toArray();
 		list=Arrays.copyOf(oarray,oarray.length,BankList_Model[].class);
 		return list;
 		//return list;
@@ -45,7 +48,7 @@ public class MyApplication extends Application {
 	private static Fragment_Model getMyBanks()
 	{
 		//Fragment_Model model=new Fragment_Model("My Banks",getBankList());
-		Object[] oarray=_dbHelper.getAllBanks().toArray();
+		Object[] oarray=_data.getMyBanks().toArray();
 		Fragment_Model model=new Fragment_Model("My Banks", Arrays.copyOf(oarray,oarray.length,BankList_Model[].class) );
 		return model;
 	}
