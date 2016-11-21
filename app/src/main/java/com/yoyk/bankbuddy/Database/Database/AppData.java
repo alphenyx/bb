@@ -40,6 +40,26 @@ public class AppData {
         return array_list;
 
     }
+    public ArrayList<BankList_Model> getMyBanks()
+    {
+        ArrayList<BankList_Model> array_list = new ArrayList<BankList_Model>();
+        SQLiteDatabase db = this.helper.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from "+TABLE_BANK+"", null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+            BankList_Model data=Convert(res);
+            if(data.getBank_fav().contentEquals("1"))
+                array_list.add(data);
+            res.moveToNext();
+        }
+        if (!res.isClosed())
+        {
+            res.close();
+        }
+        return array_list;
+
+    }
     public BankList_Model getData(String id)
     {
         return Convert(getDataCursor(id));

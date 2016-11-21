@@ -6,4 +6,7 @@
     <dimen name="tile_top_margin">16dp</dimen>
     <dimen name="left_margin">30dp</dimen>
     <dimen name="result_margin">-30dp</dimen>
+    <dimen name="list_left_margin">10dp</dimen>
+    <dimen name="list_right_margin">10dp</dimen>
+
 </resources>

@@ -48,7 +48,7 @@ public class MyApplication extends Application {
 	private static Fragment_Model getMyBanks()
 	{
 		//Fragment_Model model=new Fragment_Model("My Banks",getBankList());
-		Object[] oarray=_data.getAllBanks().toArray();
+		Object[] oarray=_data.getMyBanks().toArray();
 		Fragment_Model model=new Fragment_Model("My Banks", Arrays.copyOf(oarray,oarray.length,BankList_Model[].class) );
 		return model;
 	}
