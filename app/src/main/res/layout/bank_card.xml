@@ -8,23 +8,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100px"
+        android:layout_height="110sp"
         android:layout_below="@+id/bankbar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:orientation="horizontal"
+        android:padding="10sp"
+        android:orientation="vertical"
         tools:onClick="OnCallBalance"
         android:background="@color/colorWhite">
 
         <ImageView
             app:srcCompat="@drawable/sbi_logo"
             android:id="@+id/imageViewHeader"
-            android:layout_height="match_parent"
+            android:layout_height="100px"
             android:layout_width="100px"
             tools:onClick="OnCallBalance"
-            android:background="@color/colorWhite" />
+            android:background="@color/colorWhite"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:text="State Bank of India"
@@ -38,63 +38,83 @@
             android:paddingLeft="10sp"
             android:paddingTop="10sp"
             android:textStyle="normal|bold"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
-
-    <TextView
-        android:text="Dial for balance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:typeface="sans"
-        android:layout_weight="0.05"
-        android:textStyle="normal|bold"
-        android:paddingTop="3pt"
-        android:background="@color/colorAccent"
-        tools:textColor="@color/colorWhite" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100px"
+        android:layout_height="60sp"
         android:layout_below="@+id/bankbar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="2pt"
-        android:padding="2pt"
+        android:layout_margin="5pt"
+        android:padding="5pt"
         android:orientation="horizontal"
         tools:onClick="OnCallBalance"
-        android:background="?android:attr/colorAccent">
+        android:background="@drawable/customerborder">
 
         <ImageView
-            app:srcCompat="@drawable/phone"
+            app:srcCompat="@drawable/phone1"
             android:id="@+id/imageView"
             android:layout_height="match_parent"
             android:layout_width="100px"
             tools:onClick="OnCallBalance"/>
 
         <TextView
-            android:text="1800183423"
-            android:layout_width="wrap_content"
+            android:text="Check Balance (1800183423)"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="24sp"
+            android:textSize="20sp"
             tools:onClick="OnCallBalance"
-            tools:textColor="@color/colorWhite"
+            tools:textColor="@color/colorPrimaryDark"
             android:paddingLeft="10px"
-            android:paddingTop="14px"
-            android:phoneNumber="true" />
+            android:layout_gravity="center_vertical|center_horizontal" />
     </LinearLayout>
 
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_below="@+id/bankbar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5pt"
+        android:padding="5pt"
+        android:orientation="horizontal"
         tools:onClick="OnCallBalance"
-        android:height="0dp"
-        android:visibility="invisible" />
-</LinearLayout>
+        android:background="@drawable/customerborder">
+
+        <ImageView
+            app:srcCompat="@drawable/phone1"
+            android:id="@+id/imageViewCustomerCare"
+            android:layout_height="match_parent"
+            android:layout_width="100px"
+            tools:onClick="OnCallBalance"/>
+
+        <TextView
+            android:text="Customer Care (1800100000)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewCustomerCare"
+            android:gravity="center_horizontal|center_vertical"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="20sp"
+            tools:onClick="OnCallBalance"
+            tools:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="10px"
+            android:layout_gravity="center_vertical|center_horizontal" />
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_BankCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10sp"
+        android:layout_gravity="bottom"
+        app:adSize="FLUID"
+        app:adUnitId="ca-app-pub-5060285330387799">
+    </com.google.android.gms.ads.AdView>
+    </LinearLayout>

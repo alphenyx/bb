@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.yoyk.bankbuddy.model.BankList_Model;
 
 
@@ -25,23 +27,20 @@ import com.yoyk.bankbuddy.model.BankList_Model;
  */
 
 public class BankCard extends Activity  {
+
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bank_card);
         Intent intent = getIntent();
         Bundle b=getIntent().getExtras();
-        Button btn = (Button)findViewById(R.id.button);
+        //Button btn = (Button)findViewById(R.id.button);
         TextView txtView =(TextView)findViewById(R.id.textView);
         ImageView imgViewBalance = (ImageView)findViewById(R.id.imageView);
+        this.FormatView("State Bank of India");
 
-        btn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                OnCallBalance(v);
-            }
-        });
         txtView.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -59,8 +58,26 @@ public class BankCard extends Activity  {
 
         if(b!=null) {
         }
+
+        mAdView = (AdView) findViewById(R.id.adView_BankCard);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4").build();
+        mAdView.loadAd(adRequest);
+
     }
 
+    private void FormatView(String title)
+    {
+        int drawableID = this.getBaseContext().getResources().getIdentifier("sbi_logo", "drawable", this.getBaseContext().getPackageName());
+        ImageView imgViewHeader = (ImageView)findViewById(R.id.imageViewHeader);
+        imgViewHeader.setImageResource(drawableID);
+
+        drawableID = this.getBaseContext().getResources().getIdentifier("phone", "drawable", this.getBaseContext().getPackageName());
+        ImageView imgViewDial = (ImageView)findViewById(R.id.imageView);
+        ImageView imgViewCustomerCare = (ImageView)findViewById(R.id.imageViewCustomerCare);
+        imgViewDial.setImageResource(drawableID);
+        drawableID = this.getBaseContext().getResources().getIdentifier("phone1", "drawable", this.getBaseContext().getPackageName());
+        imgViewCustomerCare.setImageResource(drawableID);
+    }
     private void OnCallBalance(View arg0)
     {
 
