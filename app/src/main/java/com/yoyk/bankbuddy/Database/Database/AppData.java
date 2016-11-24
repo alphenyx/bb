@@ -1,5 +1,6 @@
 package com.yoyk.bankbuddy.Database.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,7 @@ import com.yoyk.bankbuddy.model.BankList_Model;
 import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
 import java.util.ArrayList;
 
+import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.COL_BANK_FAV;
 import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.COL_BANK_ID;
 import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.TABLE_BANK;
 
@@ -39,6 +41,18 @@ public class AppData {
         }
         return array_list;
 
+    }
+    public int Update(BankList_Model model)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put(COL_BANK_FAV,model.getBank_fav());
+        SQLiteDatabase db = this.helper.getWritableDatabase();
+        Cursor res=db.rawQuery("select * from "+TABLE_BANK+" where _id='24'",null);
+        int result=db.update(TABLE_BANK,cv,"_id='"+model.getBank_id()+"'",null);
+
+        Cursor res1=db.rawQuery("select * from "+TABLE_BANK+" where _id='24'",null);
+        db.close();
+        return result;
     }
     public ArrayList<BankList_Model> getMyBanks()
     {

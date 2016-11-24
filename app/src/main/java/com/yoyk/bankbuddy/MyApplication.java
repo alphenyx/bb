@@ -46,6 +46,16 @@ public class MyApplication extends Application {
 		};
 		return list;
 	}
+
+	public static void SetFavourite(BankList_Model model,boolean isFavourite)
+	{
+		BankList_Model localmodel=model;
+		if(isFavourite)
+			localmodel.setBank_fav("1");
+		else
+			localmodel.setBank_fav("0");
+		_data.Update(localmodel);
+	}
 	private static Fragment_Model getMyBanks()
 	{
 		//Fragment_Model model=new Fragment_Model("My Banks",getBankList());

@@ -57,6 +57,8 @@ public class MyBankFragment extends Fragment  {
 
         //ArrayAdapter mBankListAdaptor = ArrayAdapter.createFromResource(getActivity(), R.array.Banks, android.R.layout.simple_list_item_1);
         mBankListAdaptor=new BankListAdaptor(getActivity(),model.getBank_list());
+        IFavouriteChange change=new FavouriteChanged();
+        mBankListAdaptor.addFavouriteListener(change);
         mListView = (ListView) rootView.findViewById(R.id.listbank);
         mListView.setAdapter(mBankListAdaptor);
         setListViewHeightBasedOnChildren(mListView);
@@ -77,7 +79,15 @@ public class MyBankFragment extends Fragment  {
 
 
     }
-
+    public class FavouriteChanged implements IFavouriteChange
+    {
+        @Override
+        public void OnFavUpdate(FavEvent event) {
+            BankList_Model model=event.model();
+            Boolean isFav=event.IsFav();
+            MyApplication.SetFavourite(model,isFav);
+        }
+    }
     public static void setListViewHeightBasedOnChildren(ListView listView)
     {
         ListAdapter listAdapter = listView.getAdapter();

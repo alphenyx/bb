@@ -19,6 +19,7 @@ import com.yoyk.bankbuddy.model.BankList_Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -65,8 +66,10 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 BankList_Model m=(BankList_Model)buttonView.getTag();
                 if (isChecked) {
+                    _fireFavEvent(m, isChecked);
                     Toast.makeText(mContext, "clicked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
                 } else {
+                    _fireFavEvent(m, isChecked);
                     Toast.makeText(mContext, "unchecked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -74,6 +77,22 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
 
         view.setTag(viewHolder);
         return view;
+    }
+    private List _listeners = new ArrayList();
+    public synchronized void addFavouriteListener( IFavouriteChange l ) {
+        _listeners.add( l );
+    }
+
+    public synchronized void removeFavouriteListener( IFavouriteChange l ) {
+        _listeners.remove( l );
+    }
+    private synchronized void _fireFavEvent(BankList_Model model,boolean isFav)
+    {
+        FavEvent eve=new FavEvent(this,model,isFav);
+        Iterator listeners=_listeners.iterator();
+        while( listeners.hasNext() ) {
+            ( (IFavouriteChange) listeners.next() ).OnFavUpdate( eve );
+        }
     }
     public void ResetFilter()
     {
