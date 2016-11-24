@@ -11,6 +11,7 @@ import com.yoyk.bankbuddy.model.Fragment_Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MyApplication extends Application {
 	private static final String TAG = MyApplication.class.getSimpleName(); 
@@ -72,7 +73,9 @@ public class MyApplication extends Application {
 	}
 	private static Fragment_Model getOtherBanks()
 	{
-		Fragment_Model model=new Fragment_Model("Other Banks",getOtherBankList());
+	//	Fragment_Model model=new Fragment_Model("Other Banks",getOtherBankList());
+		Object[] oarray=_data.getAllBanks().toArray();
+		Fragment_Model model=new Fragment_Model("My Banks", Arrays.copyOf(oarray,oarray.length,BankList_Model[].class) );
 		return model;
 	}
 	public SQLiteHelper getDbHelper() {

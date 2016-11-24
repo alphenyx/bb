@@ -55,7 +55,7 @@
         android:background="@drawable/customerborder">
 
         <ImageView
-            app:srcCompat="@drawable/phone1"
+
             android:id="@+id/imageView"
             android:layout_height="match_parent"
             android:layout_width="100px"
@@ -88,7 +88,6 @@
         android:background="@drawable/customerborder">
 
         <ImageView
-            app:srcCompat="@drawable/phone1"
             android:id="@+id/imageViewCustomerCare"
             android:layout_height="match_parent"
             android:layout_width="100px"

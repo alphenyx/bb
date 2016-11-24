@@ -21,6 +21,7 @@
         android:textSize="20sp"/>
     <ToggleButton
         android:id="@+id/fav"
+        android:focusable="false"
         android:layout_width="50dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/list_right_margin"
