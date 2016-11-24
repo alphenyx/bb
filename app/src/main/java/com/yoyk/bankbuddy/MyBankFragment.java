@@ -2,6 +2,7 @@ package com.yoyk.bankbuddy;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -32,7 +33,7 @@ public class MyBankFragment extends Fragment  {
     private ListView mListView;
     private TextView mTextView;
     private int mPosition = ListView.INVALID_POSITION;
-
+    private ToggleButton toggleButton;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -49,7 +50,7 @@ public class MyBankFragment extends Fragment  {
 
         //MyApplication myApp=new MyApplication();
         Fragment_Model model=MyApplication.getModel(this.getTag());
-        View rootView = inflater.inflate(R.layout.grid_tile, container, false);
+        final View rootView = inflater.inflate(R.layout.grid_tile, container, false);
 
         mTextView=(TextView)rootView.findViewById(R.id.fragname);
         mTextView.setText(model.getFragment_Label());
@@ -71,8 +72,29 @@ public class MyBankFragment extends Fragment  {
                 startActivity(intent);
             }
         });
+
+        toggleButton = (ToggleButton)rootView.findViewById(R.id.fav);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
         return rootView;
+
+
     }
+
     public static void setListViewHeightBasedOnChildren(ListView listView)
     {
         ListAdapter listAdapter = listView.getAdapter();
