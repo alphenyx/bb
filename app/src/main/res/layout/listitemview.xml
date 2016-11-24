@@ -26,7 +26,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/list_right_margin"
         android:layout_height="50dp"
-        android:background="@drawable/toggle"
+        android:background="@drawable/heart_pink"
         android:textOff=""
         android:textOn=""/>
 </RelativeLayout>
