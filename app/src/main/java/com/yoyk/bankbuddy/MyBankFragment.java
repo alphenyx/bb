@@ -73,23 +73,6 @@ public class MyBankFragment extends Fragment  {
             }
         });
 
-        toggleButton = (ToggleButton)rootView.findViewById(R.id.fav);
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-
-                }
-                else
-                {
-
-                }
-
-            }
-        });
-
         return rootView;
 
 
