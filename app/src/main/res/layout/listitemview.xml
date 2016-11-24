@@ -22,10 +22,11 @@
     <ToggleButton
         android:id="@+id/fav"
         android:focusable="false"
-        android:text="fav"
         android:layout_width="50dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/list_right_margin"
         android:layout_height="50dp"
-        />
+        android:background="@drawable/toggle"
+        android:textOff=""
+        android:textOn=""/>
 </RelativeLayout>
