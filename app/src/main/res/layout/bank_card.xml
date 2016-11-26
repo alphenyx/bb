@@ -112,8 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10sp"
-        android:layout_gravity="bottom"
         app:adSize="FLUID"
-        app:adUnitId="ca-app-pub-5060285330387799">
+        app:adUnitId="@string/banner_home_footer">
     </com.google.android.gms.ads.AdView>
     </LinearLayout>

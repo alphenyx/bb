@@ -21,6 +21,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.yoyk.bankbuddy.model.BankList_Model;
 
+import org.w3c.dom.Text;
+
 
 /**
  * Created by Viki on 11/3/2016.
@@ -29,6 +31,7 @@ import com.yoyk.bankbuddy.model.BankList_Model;
 public class BankCard extends Activity  {
 
     private AdView mAdView;
+    BankList_Model bankList_model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +39,13 @@ public class BankCard extends Activity  {
         setContentView(R.layout.bank_card);
         Intent intent = getIntent();
         Bundle b=getIntent().getExtras();
+        bankList_model = (BankList_Model)b.getParcelable("com.yoyk.bankbuddy.MESSAGE");
+        ValidateModel(bankList_model);
+        FormatView(bankList_model);
         //Button btn = (Button)findViewById(R.id.button);
         TextView txtView =(TextView)findViewById(R.id.textView);
         ImageView imgViewBalance = (ImageView)findViewById(R.id.imageView);
-        this.FormatView("State Bank of India");
+        this.FormatView(bankList_model);
 
         txtView.setOnClickListener(new View.OnClickListener()
         {
@@ -56,18 +62,47 @@ public class BankCard extends Activity  {
             }
         });
 
+        txtView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                OnCallCare(v);
+            }
+        });
+        imgViewBalance.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                OnCallCare(v);
+            }
+        });
+
+
         if(b!=null) {
         }
 
-        mAdView = (AdView) findViewById(R.id.adView_BankCard);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4").build();
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
         mAdView.loadAd(adRequest);
 
     }
 
-    private void FormatView(String title)
+    private void ValidateModel(BankList_Model bankList_model)
     {
-        int drawableID = this.getBaseContext().getResources().getIdentifier("sbi_logo", "drawable", this.getBaseContext().getPackageName());
+        if(bankList_model.getBank_bank_logo() == null || bankList_model.getBank_bank_logo() == "")
+            bankList_model.setBank_bank_logo("sbi_logo");
+        if(bankList_model.getBank_care() == null || bankList_model.getBank_care() == "")
+            bankList_model.setBank_care("1800300300");
+        if(bankList_model.getBank_inquiry() == null || bankList_model.getBank_inquiry() == "")
+            bankList_model.setBank_care("02230256767");
+        if(bankList_model.getBank_name() == null || bankList_model.getBank_name() == "")
+            bankList_model.setBank_name("State Bank of India");
+    }
+
+    private void FormatView(BankList_Model bankList_model)
+    {
+        int drawableID = this.getBaseContext().getResources().getIdentifier(bankList_model.getBank_bank_logo(), "drawable", this.getBaseContext().getPackageName());
         ImageView imgViewHeader = (ImageView)findViewById(R.id.imageViewHeader);
         imgViewHeader.setImageResource(drawableID);
 
@@ -75,14 +110,23 @@ public class BankCard extends Activity  {
         ImageView imgViewDial = (ImageView)findViewById(R.id.imageView);
         ImageView imgViewCustomerCare = (ImageView)findViewById(R.id.imageViewCustomerCare);
         imgViewDial.setImageResource(drawableID);
-        drawableID = this.getBaseContext().getResources().getIdentifier("phone1", "drawable", this.getBaseContext().getPackageName());
+        drawableID = this.getBaseContext().getResources().getIdentifier("phone", "drawable", this.getBaseContext().getPackageName());
         imgViewCustomerCare.setImageResource(drawableID);
+
+        TextView textViewDial = (TextView)findViewById(R.id.textView);
+        TextView textViewCare = (TextView)findViewById(R.id.textViewCustomerCare);
+        TextView textViewHeader = (TextView)findViewById(R.id.textViewHeader);
+
+        textViewDial.setText("Check Balance ("+bankList_model.getBank_inquiry()+")");
+        textViewCare.setText("Customer Care ("+bankList_model.getBank_care()+")");
+        textViewHeader.setText(bankList_model.getBank_name());
     }
+
     private void OnCallBalance(View arg0)
     {
 
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse("tel:02230256767"));
+        callIntent.setData(Uri.parse("tel:"+bankList_model.getBank_inquiry()));
         if(checkPermission(1))
             startActivity(callIntent);
         else
@@ -91,6 +135,19 @@ public class BankCard extends Activity  {
         }
     }
 
+
+    private void OnCallCare(View arg0)
+    {
+
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:"+bankList_model.getBank_care()));
+        if(checkPermission(1))
+            startActivity(callIntent);
+        else
+        {
+            BankCard.super.requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 20);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult (int requestCode,

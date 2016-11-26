@@ -85,7 +85,7 @@ public class MyApplication extends Application {
 	{
 	//	Fragment_Model model=new Fragment_Model("Other Banks",getOtherBankList());
 		Object[] oarray=_data.getAllBanks().toArray();
-		Fragment_Model model=new Fragment_Model("My Banks", Arrays.copyOf(oarray,oarray.length,BankList_Model[].class) );
+		Fragment_Model model=new Fragment_Model("Other Banks", Arrays.copyOf(oarray,oarray.length,BankList_Model[].class) );
 		return model;
 	}
 	public SQLiteHelper getDbHelper() {
