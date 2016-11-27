@@ -81,10 +81,10 @@ public class BankCard extends Activity  {
         if(b!=null) {
         }
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
+        //mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder()
+        //        .build();
+        //mAdView.loadAd(adRequest);
 
     }
 
