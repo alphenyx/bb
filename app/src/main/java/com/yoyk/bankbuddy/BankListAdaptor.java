@@ -56,26 +56,28 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
         View view = LayoutInflater.from(mContext).inflate(R.layout.listitemview, parent, false);
        // ViewHolder viewHolder = (ViewHolder) view.getTag();
         //viewHolder.iconView.setImageResource(R.drawable.ic_logo);
-        ViewHolder viewHolder = new ViewHolder(view);
-        int drawableID = mContext.getResources().getIdentifier("sbi_logo", "drawable", mContext.getPackageName());
-        viewHolder.iconView.setImageResource(drawableID);
-        viewHolder.nameView.setText(mBankList_models[position].getBank_name());
-        viewHolder.favButtonView.setChecked(mBankList_models[position].getBank_fav().contentEquals("1"));
-        viewHolder.favButtonView.setTag(mBankList_models[position]);
-        viewHolder.favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                BankList_Model m=(BankList_Model)buttonView.getTag();
-                if (isChecked) {
-                    _fireFavEvent(m, isChecked);
-                    Toast.makeText(mContext, "clicked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
-                } else {
-                    _fireFavEvent(m, isChecked);
-                    Toast.makeText(mContext, "unchecked "+ m.getBank_name(), Toast.LENGTH_SHORT).show();
+        if(view!=null) {
+            ViewHolder viewHolder = new ViewHolder(view);
+            int drawableID = mContext.getResources().getIdentifier("sbi_logo", "drawable", mContext.getPackageName());
+            viewHolder.iconView.setImageResource(drawableID);
+            viewHolder.nameView.setText(mBankList_models[position].getBank_name());
+            viewHolder.favButtonView.setChecked(mBankList_models[position].getBank_fav().contentEquals("1"));
+            viewHolder.favButtonView.setTag(mBankList_models[position]);
+            viewHolder.favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    BankList_Model m = (BankList_Model) buttonView.getTag();
+                    if (isChecked) {
+                        _fireFavEvent(m, isChecked);
+                        Toast.makeText(mContext, "clicked " + m.getBank_name(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        _fireFavEvent(m, isChecked);
+                        Toast.makeText(mContext, "unchecked " + m.getBank_name(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
 
-        view.setTag(viewHolder);
+            view.setTag(viewHolder);
+        }
         return view;
     }
     private List _listeners = new ArrayList();
