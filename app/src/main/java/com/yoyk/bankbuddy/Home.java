@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -32,8 +34,9 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
     SearchView mSearchView=null;
     ListView mResultsView=null;
     BankListAdaptor mBankListAdaptor=null;
+    ImageButton mSearchButton;
     private AdView mAdView;
-
+    LinearLayout mTitlebar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +44,18 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         setContentView(R.layout.activity_scrolling);
         mSearchView = (SearchView) findViewById(R.id.searchView);
         mResultsView = (ListView) findViewById(R.id.results_view);
+        mSearchButton=(ImageButton) findViewById(R.id.searchbutton);
+        mTitlebar=(LinearLayout) findViewById(R.id.titlebar);
         mBankListAdaptor=new BankListAdaptor(getApplicationContext(),MyApplication.getBankList());
         mResultsView.setAdapter(mBankListAdaptor);
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSearchView.setVisibility(View.VISIBLE);
+                mTitlebar.setVisibility(View.INVISIBLE);
+                mSearchView.setFocusable(true);
+            }
+        });
         mResultsView.setTextFilterEnabled(true);
         setupSearchView();
         final Intent intent = new Intent(this,BankCard.class);
@@ -98,11 +111,14 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
             mBankListAdaptor.ResetFilter();
             mResultsView.clearTextFilter();
             mResultsView.setVisibility(View.INVISIBLE);
+            mSearchView.setVisibility(View.INVISIBLE);
+            mTitlebar.setVisibility(View.VISIBLE);
             myView.setVisibility(View.VISIBLE);
             allView.setVisibility(View.VISIBLE);
         } else {
             mResultsView.setFilterText(newText.toString());
             mResultsView.setVisibility(View.VISIBLE);
+            mTitlebar.setVisibility(View.INVISIBLE);
             myView.setVisibility(View.INVISIBLE);
             allView.setVisibility(View.INVISIBLE);
         }
