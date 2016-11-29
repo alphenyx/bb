@@ -8,5 +8,8 @@
     <dimen name="result_margin">-30dp</dimen>
     <dimen name="list_left_margin">10dp</dimen>
     <dimen name="list_right_margin">10dp</dimen>
+    <dimen name="h2_left_margin">5dp</dimen>
+    <dimen name="h2_right_margin">5dp</dimen>
+
 
 </resources>

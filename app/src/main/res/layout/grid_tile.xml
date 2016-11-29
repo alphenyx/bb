@@ -10,6 +10,7 @@
         android:textSize="20sp"
         android:textAppearance="@color/colorPrimaryDark"
         android:textStyle="bold"
+        android:layout_marginLeft="@dimen/h2_left_margin"
     />
     <ListView
         android:id="@+id/listbank"
