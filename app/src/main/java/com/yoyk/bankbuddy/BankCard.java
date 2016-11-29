@@ -12,10 +12,12 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -32,6 +34,7 @@ public class BankCard extends Activity  {
 
     private AdView mAdView;
     BankList_Model bankList_model;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,12 @@ public class BankCard extends Activity  {
         bankList_model = (BankList_Model)b.getParcelable("com.yoyk.bankbuddy.MESSAGE");
         ValidateModel(bankList_model);
         FormatView(bankList_model);
+        mContext=getApplicationContext();
         //Button btn = (Button)findViewById(R.id.button);
         TextView txtView =(TextView)findViewById(R.id.textView);
         ImageView imgViewBalance = (ImageView)findViewById(R.id.imageView);
+        ToggleButton favButtonView = (ToggleButton) findViewById(R.id.fav);
+
         this.FormatView(bankList_model);
 
         txtView.setOnClickListener(new View.OnClickListener()
@@ -77,7 +83,18 @@ public class BankCard extends Activity  {
             }
         });
 
-
+        favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                MyApplication.SetFavourite(bankList_model,isChecked);
+                if (isChecked) {
+                    //_fireFavEvent(bankList_model, isChecked);
+                    Toast.makeText(mContext, "clicked " + bankList_model.getBank_name(), Toast.LENGTH_SHORT).show();
+                } else {
+                    //_fireFavEvent(bankList_model, isChecked);
+                    Toast.makeText(mContext, "unchecked " + bankList_model.getBank_name(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         if(b!=null) {
         }
 
@@ -116,10 +133,13 @@ public class BankCard extends Activity  {
         TextView textViewDial = (TextView)findViewById(R.id.textView);
         TextView textViewCare = (TextView)findViewById(R.id.textViewCustomerCare);
         TextView textViewHeader = (TextView)findViewById(R.id.textViewHeader);
+        ToggleButton favButtonView = (ToggleButton) findViewById(R.id.fav);
 
         textViewDial.setText("Check Balance ("+bankList_model.getBank_inquiry()+")");
         textViewCare.setText("Customer Care ("+bankList_model.getBank_care()+")");
         textViewHeader.setText(bankList_model.getBank_name());
+        favButtonView.setChecked(bankList_model.getBank_fav().contentEquals("1"));
+
     }
 
     private void OnCallBalance(View arg0)
@@ -134,7 +154,10 @@ public class BankCard extends Activity  {
             BankCard.super.requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 20);
         }
     }
+    private void OnFavClicked(View arg0)
+    {
 
+    }
 
     private void OnCallCare(View arg0)
     {
@@ -172,6 +195,7 @@ public class BankCard extends Activity  {
         }
         return false;
     }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

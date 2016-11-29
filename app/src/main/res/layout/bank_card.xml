@@ -18,7 +18,7 @@
         android:background="@color/colorWhite">
 
         <ImageView
-            app:srcCompat="@drawable/sbi_logo"
+            app:srcCompat="@drawable/statebankofindia"
             android:id="@+id/imageViewHeader"
             android:layout_height="100px"
             android:layout_width="100px"

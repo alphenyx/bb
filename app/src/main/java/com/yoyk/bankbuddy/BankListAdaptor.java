@@ -58,11 +58,15 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
         //viewHolder.iconView.setImageResource(R.drawable.ic_logo);
         if(view!=null) {
             ViewHolder viewHolder = new ViewHolder(view);
-            int drawableID = mContext.getResources().getIdentifier("sbi_logo", "drawable", mContext.getPackageName());
+            String bankLogo=mBankList_models[position].getBank_bank_logo();
+            if(bankLogo==null)
+                bankLogo="STATEBANKOFINDIA";
+            int drawableID = mContext.getResources().getIdentifier(bankLogo.toLowerCase(), "drawable", mContext.getPackageName());
             viewHolder.iconView.setImageResource(drawableID);
             viewHolder.nameView.setText(mBankList_models[position].getBank_name());
             viewHolder.favButtonView.setChecked(mBankList_models[position].getBank_fav().contentEquals("1"));
             viewHolder.favButtonView.setTag(mBankList_models[position]);
+            viewHolder.favButtonView.setVisibility(View.INVISIBLE); // favorite button is hidden here
             viewHolder.favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     BankList_Model m = (BankList_Model) buttonView.getTag();

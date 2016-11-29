@@ -5,11 +5,11 @@ package com.yoyk.bankbuddy.Database.Database;
  */
 
 public interface DatabaseConstants {
-    public static String DB_NAME_NEW = "banklist44.db";
+    public static String DB_NAME_NEW = "banklist4.db";
     public static String DB_NAME = "bank.db";
 
-    public static final String TABLE_BANK="banklist";
-    public static final int DATABASE_VERSION = 4;
+    public static final String TABLE_BANK="banklist1";
+    public static final int DATABASE_VERSION = 1;
 
     public static final String COL_BANK_ID = "_id";
     public static final String COL_BANK_NAME = "name";
