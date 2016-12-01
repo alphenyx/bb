@@ -129,9 +129,10 @@
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_BankCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10sp"
-        app:adSize="BANNER"
-        app:adUnitId="@string/banner_home_footer">
+        android:background="@color/colorAccent"
+        app:adSize="FLUID"
+        app:adUnitId="@string/interstitial_full_screen">
     </com.google.android.gms.ads.AdView>
     </LinearLayout>

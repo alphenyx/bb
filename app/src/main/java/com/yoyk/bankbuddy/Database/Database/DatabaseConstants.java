@@ -5,7 +5,7 @@ package com.yoyk.bankbuddy.Database.Database;
  */
 
 public interface DatabaseConstants {
-    public static String DB_NAME_NEW = "banklist4.db";
+    public static String DB_NAME_NEW = "banklist5.db";
     public static String DB_NAME = "bank.db";
 
     public static final String TABLE_BANK="banklist1";
