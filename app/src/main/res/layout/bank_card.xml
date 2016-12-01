@@ -29,31 +29,31 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100px"
+            android:layout_height="110sp"
             android:layout_below="@+id/logofav"
             android:orientation="horizontal"
             android:background="@color/colorWhite">
 
-        <TextView
-            android:text="State Bank of India"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewHeader"
-            android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="24sp"
-            tools:onClick="OnCallBalance"
-            android:paddingLeft="10sp"
-            android:paddingTop="10sp"
-            android:textStyle="normal|bold"
-            android:layout_centerHorizontal="true"/>
+            <TextView
+                android:text="State Bank of India"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewHeader"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="24sp"
+                tools:onClick="OnCallBalance"
+                android:paddingLeft="10sp"
+                android:paddingTop="10sp"
+                android:textStyle="normal|bold"
+                android:layout_centerHorizontal="true"/>
             <ToggleButton
                 android:id="@+id/fav"
                 android:focusable="false"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="10sp"
-                android:background="@drawable/customerborder"
+                android:background="@drawable/toggle"
                 android:textOff=""
                 android:textOn=""
                 android:layout_alignParentRight="true"
@@ -131,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10sp"
-        app:adSize="FLUID"
+        app:adSize="BANNER"
         app:adUnitId="@string/banner_home_footer">
     </com.google.android.gms.ads.AdView>
     </LinearLayout>

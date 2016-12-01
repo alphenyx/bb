@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- When selected, use grey -->
@@ -8,10 +7,8 @@
 
     </item>
     <!-- When not selected, use white-->
-    <item android:drawable="@drawable/heart_white"
+    <item android:drawable="@drawable/heart_unselect"
         android:state_checked="false">
-
     </item>
 
 </selector>
-    </layer-list>
