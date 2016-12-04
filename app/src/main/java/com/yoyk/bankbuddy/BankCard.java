@@ -132,10 +132,14 @@ public class BankCard extends Activity  {
         TextView textViewHeader = (TextView)findViewById(R.id.textViewHeader);
         ToggleButton favButtonView = (ToggleButton) findViewById(R.id.fav);
 
+
         textViewDial.setText("Check Balance ("+bankList_model.getBank_inquiry()+")");
         textViewCare.setText("Customer Care ("+bankList_model.getBank_care()+")");
         textViewHeader.setText(bankList_model.getBank_name());
         favButtonView.setChecked(bankList_model.getBank_fav().contentEquals("1"));
+
+        int height_in_pixels = textViewHeader.getLineCount() * textViewHeader.getLineHeight(); //approx height text
+        textViewHeader.setHeight(height_in_pixels);
 
     }
 

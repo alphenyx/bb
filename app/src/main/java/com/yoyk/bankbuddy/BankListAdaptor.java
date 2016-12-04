@@ -72,10 +72,10 @@ public class BankListAdaptor extends BaseAdapter implements Filterable{
                     BankList_Model m = (BankList_Model) buttonView.getTag();
                     if (isChecked) {
                         _fireFavEvent(m, isChecked);
-                        Toast.makeText(mContext, "clicked " + m.getBank_name(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, m.getBank_name() + " added to favorites", Toast.LENGTH_SHORT).show();
                     } else {
                         _fireFavEvent(m, isChecked);
-                        Toast.makeText(mContext, "unchecked " + m.getBank_name(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, m.getBank_name() + " removed from favorites", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
