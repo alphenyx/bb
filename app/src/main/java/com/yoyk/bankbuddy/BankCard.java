@@ -21,16 +21,22 @@ import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.google.samples.quickstart.analytics.AnalyticsApplication;
 import com.yoyk.bankbuddy.model.BankList_Model;
 
 import org.w3c.dom.Text;
+
+import static android.R.attr.name;
+import static com.google.android.gms.internal.zzs.TAG;
 
 
 /**
  * Created by Viki on 11/3/2016.
  */
 
-public class BankCard extends Activity  {
+public class BankCard extends Activity {
 
     private AdView mAdView;
     BankList_Model bankList_model;
@@ -100,6 +106,16 @@ public class BankCard extends Activity  {
         //        .build();
         //mAdView.loadAd(adRequest);
 
+
+        try {
+            AnalyticsApplication application = (AnalyticsApplication) getApplication();
+            Tracker mTracker = application.getDefaultTracker();
+
+            Log.i(TAG, "Setting screen name: " + name);
+            mTracker.setScreenName("Image~" + name);
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }catch (Exception e)
+        {Toast.makeText(this, "Analytics Exception", Toast.LENGTH_LONG).show();}
     }
 
     private void ValidateModel(BankList_Model bankList_model)
@@ -140,6 +156,7 @@ public class BankCard extends Activity  {
 
         int height_in_pixels = textViewHeader.getLineCount() * textViewHeader.getLineHeight(); //approx height text
         textViewHeader.setHeight(height_in_pixels);
+
 
     }
 

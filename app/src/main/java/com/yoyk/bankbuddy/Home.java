@@ -37,6 +37,7 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
     ImageButton mSearchButton;
     private AdView mAdView;
     LinearLayout mTitlebar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,10 +71,10 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
                 startActivity(intent);
             }
         });
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
+//        mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        mAdView.loadAd(adRequest);
 
     }
     private void setupSearchView() {
