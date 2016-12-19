@@ -20,6 +20,7 @@
         android:layout_height="50sp"
         android:layout_toRightOf="@id/list_item_icon"
         android:fontFamily="sans-serif-condensed"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_toEndOf="@+id/list_item_icon"
         android:textSize="20sp"
         android:layout_centerVertical="true"/>
