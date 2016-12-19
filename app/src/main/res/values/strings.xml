@@ -94,6 +94,7 @@
     <string name="enter_text">search</string>
     <string name="context">mybank</string>
     <string name="context2">other</string>
-    <string name="banner_home_footer">ca-app-pub-0664570763252260/3326522424</string>
+    <string name="banner_home_footer">ca-app-pub-5060285330387799/6227456231</string>
     <string name="interstitial_full_screen">ca-app-pub-0664570763252260/1769900428</string>
+    <string name="ad_app_id">ca-app-pub-5060285330387799~4750723039</string>
 </resources>

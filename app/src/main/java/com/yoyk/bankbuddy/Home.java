@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.yoyk.bankbuddy.model.BankList_Model;
 
 import static com.yoyk.bankbuddy.MyBankFragment.EXTRA_MESSAGE;
@@ -70,6 +71,9 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
                 startActivity(intent);
             }
         });
+
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-5060285330387799~4750723039");
+
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();

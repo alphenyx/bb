@@ -95,10 +95,10 @@ public class BankCard extends Activity  {
                 }
             }
         });
-        //mAdView = (AdView) findViewById(R.id.adView);
-        //AdRequest adRequest = new AdRequest.Builder()
-        //        .build();
-        //mAdView.loadAd(adRequest);
+        mAdView = (AdView) findViewById(R.id.adView_BankCard);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
 
     }
 
