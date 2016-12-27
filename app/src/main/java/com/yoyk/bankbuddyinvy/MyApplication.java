@@ -1,17 +1,13 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.Application;
-import android.database.Cursor;
 import android.util.Log;
 
-import com.yoyk.bankbuddy.Database.Database.AppData;
-import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
-import com.yoyk.bankbuddy.model.BankList_Model;
-import com.yoyk.bankbuddy.model.Fragment_Model;
+import com.yoyk.bankbuddyinvy.Database.Database.AppData;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.Fragment_Model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class MyApplication extends Application {
 	private static final String TAG = MyApplication.class.getSimpleName(); 

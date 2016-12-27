@@ -1,34 +1,25 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
-import static com.yoyk.bankbuddy.MyBankFragment.EXTRA_MESSAGE;
+import static com.yoyk.bankbuddyinvy.MyBankFragment.EXTRA_MESSAGE;
 
 public class Home extends AppCompatActivity implements SearchView.OnQueryTextListener {
 

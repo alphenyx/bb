@@ -1,6 +1,6 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
 /**
  * Created by Viki on 10/23/2016.

@@ -1,11 +1,11 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
+import com.yoyk.bankbuddyinvy.Database.Database.DatabaseConstants;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;

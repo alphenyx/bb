@@ -1,17 +1,13 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 /**
  * Created by Viki on 10/22/2016.
  */
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
-import com.yoyk.bankbuddy.model.BankList_Model;
-
-import java.util.ArrayList;
+import com.yoyk.bankbuddyinvy.Database.Database.DatabaseConstants;
 
 public class SQLiteHelper extends SQLiteOpenHelper implements DatabaseConstants {
 

@@ -6,7 +6,7 @@
     android:layout_below="@+id/results_view"
     android:layout_marginTop="@dimen/app_results_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.yoyk.bankbuddy.Home"
+    tools:context="com.yoyk.bankbuddyinvy.Home"
     tools:showIn="@layout/activity_scrolling">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +16,7 @@
         android:baselineAligned="false"
         android:divider="?android:attr/dividerHorizontal"
         android:orientation="horizontal"
-        tools:context="com.yoyk.bankbuddy.Home">
+        tools:context="com.yoyk.bankbuddyinvy.Home">
 
         <ListView
             android:id="@+id/results_view"
@@ -33,7 +33,7 @@
 
         <fragment
             android:id="@+id/mybank"
-            android:name="com.yoyk.bankbuddy.MyBankFragment"
+            android:name="com.yoyk.bankbuddyinvy.MyBankFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,7 +42,7 @@
 
         <fragment
             android:id="@+id/otherbanks"
-            android:name="com.yoyk.bankbuddy.MyBankFragment"
+            android:name="com.yoyk.bankbuddyinvy.MyBankFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mybank"

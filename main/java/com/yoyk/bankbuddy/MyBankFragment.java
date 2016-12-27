@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
@@ -17,8 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
-import com.yoyk.bankbuddy.model.Fragment_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.Fragment_Model;
 
 /**
  * Created by Viki on 10/22/2016.

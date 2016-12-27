@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -12,7 +12,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

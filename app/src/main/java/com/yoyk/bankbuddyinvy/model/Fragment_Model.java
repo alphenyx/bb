@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy.model;
+package com.yoyk.bankbuddyinvy.model;
 
 /**
  * Created by Viki on 11/3/2016.

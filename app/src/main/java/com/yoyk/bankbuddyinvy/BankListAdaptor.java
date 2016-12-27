@@ -1,13 +1,11 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
-import android.widget.CursorAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -15,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.Fragment;
 import android.app.ListFragment;

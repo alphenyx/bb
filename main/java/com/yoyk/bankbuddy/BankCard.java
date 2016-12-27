@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
 
 /**

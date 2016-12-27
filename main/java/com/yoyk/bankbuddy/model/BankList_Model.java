@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy.model;
+package com.yoyk.bankbuddyinvy.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

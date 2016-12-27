@@ -1,27 +1,19 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.Fragment;
-import android.app.LoaderManager;
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.yoyk.bankbuddy.model.BankList_Model;
-import com.yoyk.bankbuddy.model.Fragment_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.Fragment_Model;
 
 /**
  * Created by Viki on 10/22/2016.

@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy.Database.Database;
+package com.yoyk.bankbuddyinvy.Database.Database;
 
 /**
  * Created by Viki on 10/22/2016.

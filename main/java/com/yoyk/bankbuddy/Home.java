@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy;
+package com.yoyk.bankbuddyinvy;
 
 import android.app.Fragment;
 import android.app.SearchManager;
@@ -24,9 +24,9 @@ import android.widget.ArrayAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.yoyk.bankbuddy.model.BankList_Model;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
-import static com.yoyk.bankbuddy.MyBankFragment.EXTRA_MESSAGE;
+import static com.yoyk.bankbuddyinvy.MyBankFragment.EXTRA_MESSAGE;
 
 public class Home extends AppCompatActivity implements SearchView.OnQueryTextListener {
 

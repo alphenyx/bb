@@ -1,4 +1,4 @@
-package com.yoyk.bankbuddy.Database.Database;
+package com.yoyk.bankbuddyinvy.Database.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,14 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.yoyk.bankbuddy.SQLiteHelper;
-import com.yoyk.bankbuddy.model.BankList_Model;
-import com.yoyk.bankbuddy.Database.Database.DatabaseConstants;
+import com.yoyk.bankbuddyinvy.model.BankList_Model;
+
 import java.util.ArrayList;
 
-import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.COL_BANK_FAV;
-import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.COL_BANK_ID;
-import static com.yoyk.bankbuddy.Database.Database.DatabaseConstants.TABLE_BANK;
+import static com.yoyk.bankbuddyinvy.Database.Database.DatabaseConstants.COL_BANK_FAV;
+import static com.yoyk.bankbuddyinvy.Database.Database.DatabaseConstants.COL_BANK_ID;
+import static com.yoyk.bankbuddyinvy.Database.Database.DatabaseConstants.TABLE_BANK;
 
 /**
  * Created by Viki on 11/19/2016.
