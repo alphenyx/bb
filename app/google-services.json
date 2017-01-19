@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "976038964786",
+    "project_id": "bankbuddy-8dd20"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976038964786:android:734fc0d8871150d9",
+        "android_client_info": {
+          "package_name": "com.yoyk.bankbuddyinvy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDePaiTdG_km0OPHL_9JM35M2MwRMMRTGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-90481868-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

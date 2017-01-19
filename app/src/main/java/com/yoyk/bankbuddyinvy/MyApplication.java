@@ -2,10 +2,11 @@ package com.yoyk.bankbuddyinvy;
 
 import android.app.Application;
 import android.util.Log;
-
 import com.yoyk.bankbuddyinvy.Database.Database.AppData;
 import com.yoyk.bankbuddyinvy.model.BankList_Model;
 import com.yoyk.bankbuddyinvy.model.Fragment_Model;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.Arrays;
 
@@ -13,13 +14,22 @@ public class MyApplication extends Application {
 	private static final String TAG = MyApplication.class.getSimpleName(); 
 	private static SQLiteHelper _dbHelper;
 	private static AppData _data;
+	private Tracker mTracker;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		Log.d(TAG, "onCreate my app");
 	    _dbHelper = new SQLiteHelper(this);
 		_data=new AppData(this.getApplicationContext());
-
+	}
+	synchronized public Tracker getDefaultTracker() {
+		if (mTracker == null) {
+			GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+			// To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+			mTracker = analytics.newTracker(R.xml.global_tracker);
+		}
+		return mTracker;
 	}
 	public static BankList_Model[] getBankList()
 	{

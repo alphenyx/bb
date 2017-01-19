@@ -17,8 +17,11 @@ import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
+import static android.R.attr.name;
 import static com.yoyk.bankbuddyinvy.MyBankFragment.EXTRA_MESSAGE;
 
 public class Home extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -29,6 +32,8 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
     ImageButton mSearchButton;
     private AdView mAdView;
     LinearLayout mTitlebar;
+    private Tracker mTracker;
+    String name="HomeActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,10 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mTracker!=null) {
+                    mTracker.setScreenName(name+"-"+"search button clicked");
+                    mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+                }
                 mSearchView.setVisibility(View.VISIBLE);
                 mTitlebar.setVisibility(View.INVISIBLE);
                 mSearchView.setFocusable(true);
@@ -69,6 +78,10 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         mAdView.loadAd(adRequest);
+
+
+        MyApplication application = (MyApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
     }
     private void setupSearchView() {
@@ -133,6 +146,10 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         super.onResume();
         if (mAdView != null) {
             mAdView.resume();
+        }
+        if(mTracker!=null) {
+            mTracker.setScreenName(name);
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         }
     }
 

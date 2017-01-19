@@ -16,6 +16,8 @@ import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.yoyk.bankbuddyinvy.model.BankList_Model;
 
 
@@ -28,6 +30,8 @@ public class BankCard extends Activity  {
     private AdView mAdView;
     BankList_Model bankList_model;
     private Context mContext;
+    private Tracker mTracker;
+    String name="BankCardActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class BankCard extends Activity  {
         mContext=getApplicationContext();
         //Button btn = (Button)findViewById(R.id.button);
         TextView txtView =(TextView)findViewById(R.id.textView);
+        TextView txtViewCustCare =(TextView)findViewById(R.id.textViewCustomerCare);
+
         ImageView imgViewBalance = (ImageView)findViewById(R.id.imageView);
         ToggleButton favButtonView = (ToggleButton) findViewById(R.id.fav);
 
@@ -65,6 +71,12 @@ public class BankCard extends Activity  {
         {
             @Override
             public void onClick(View v) {
+                OnCallBalance(v);
+            }
+        });
+        txtViewCustCare.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
                 OnCallCare(v);
             }
         });
@@ -80,9 +92,17 @@ public class BankCard extends Activity  {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 MyApplication.SetFavourite(bankList_model,isChecked);
                 if (isChecked) {
+                    if(mTracker!=null) {
+                        mTracker.setScreenName(name+"-"+bankList_model.getBank_name()+"-added to favourites");
+                        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+                    }
                     //_fireFavEvent(bankList_model, isChecked);
                     Toast.makeText(mContext, "clicked " + bankList_model.getBank_name(), Toast.LENGTH_SHORT).show();
                 } else {
+                    if(mTracker!=null) {
+                        mTracker.setScreenName(name+"-"+bankList_model.getBank_name()+"-removed from favourites");
+                        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+                    }
                     //_fireFavEvent(bankList_model, isChecked);
                     Toast.makeText(mContext, "unchecked " + bankList_model.getBank_name(), Toast.LENGTH_SHORT).show();
                 }
@@ -92,7 +112,18 @@ public class BankCard extends Activity  {
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         mAdView.loadAd(adRequest);
+        MyApplication application = (MyApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mTracker!=null) {
+            mTracker.setScreenName(name+"-"+bankList_model.getBank_name());
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
     }
 
     private void ValidateModel(BankList_Model bankList_model)
@@ -138,7 +169,10 @@ public class BankCard extends Activity  {
 
     private void OnCallBalance(View arg0)
     {
-
+        if(mTracker!=null) {
+            mTracker.setScreenName(name+"-"+bankList_model.getBank_name()+"-balance clicked");
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
         callIntent.setData(Uri.parse("tel:"+bankList_model.getBank_inquiry()));
         if(checkPermission(1))
@@ -155,7 +189,10 @@ public class BankCard extends Activity  {
 
     private void OnCallCare(View arg0)
     {
-
+        if(mTracker!=null) {
+            mTracker.setScreenName(name+"-"+bankList_model.getBank_name()+"-customer care clicked");
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
         callIntent.setData(Uri.parse("tel:"+bankList_model.getBank_care()));
         if(checkPermission(1))
