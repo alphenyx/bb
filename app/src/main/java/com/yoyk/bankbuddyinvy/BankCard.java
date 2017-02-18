@@ -46,6 +46,7 @@ public class BankCard extends Activity  {
         //Button btn = (Button)findViewById(R.id.button);
         TextView txtView =(TextView)findViewById(R.id.textView);
         TextView txtViewCustCare =(TextView)findViewById(R.id.textViewCustomerCare);
+        TextView txtRetire=(TextView)findViewById(R.id.txtRetire);
 
         ImageView imgViewBalance = (ImageView)findViewById(R.id.imageView);
         ToggleButton favButtonView = (ToggleButton) findViewById(R.id.fav);
@@ -88,6 +89,17 @@ public class BankCard extends Activity  {
             }
         });
 
+        if(bankList_model.getBank_id().equalsIgnoreCase("100")) {
+            txtRetire.setVisibility(View.VISIBLE);
+
+            txtRetire.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    OnShowRetirement(v);
+                }
+            });
+        }
+
         favButtonView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 MyApplication.SetFavourite(bankList_model,isChecked);
@@ -121,7 +133,7 @@ public class BankCard extends Activity  {
     protected void onResume() {
         super.onResume();
         if(mTracker!=null) {
-            mTracker.setScreenName(name+"-"+bankList_model.getBank_name());
+            mTracker.setScreenName(name+"-"+bankList_model.getBank_name()+"  email:"+UserEmailFetcher.getEmail(getApplicationContext()));
             mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         }
     }
@@ -186,7 +198,11 @@ public class BankCard extends Activity  {
     {
 
     }
-
+    private void OnShowRetirement(View arg0)
+    {
+        final Intent intent = new Intent(this,PFPredict.class);
+        startActivity(intent);
+    }
     private void OnCallCare(View arg0)
     {
         if(mTracker!=null) {

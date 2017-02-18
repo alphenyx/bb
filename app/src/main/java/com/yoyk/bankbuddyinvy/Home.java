@@ -148,7 +148,7 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
             mAdView.resume();
         }
         if(mTracker!=null) {
-            mTracker.setScreenName(name);
+            mTracker.setScreenName(name+"  email:"+UserEmailFetcher.getEmail(getApplicationContext()));
             mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         }
     }

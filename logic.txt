@@ -1,0 +1,83 @@
+age?
+current epf balance?
+basic salary?
+
+=====================================
+
+assume average hike is 8%
+assume pf rate 12%
+assume retirement age as 58
+employer contribution 3.67%
+current epf rate of interest 8.65%
+
+=====================================
+
+function calculate_epf()
+{
+	var user_age = parseInt(document.frm_epf.your_age.value);
+	if(isNaN(user_age)) user_age = 0;
+
+	var user_basic_sal = parseInt(document.frm_epf.basic_salary_monthly.value);
+	if(isNaN(user_basic_sal)) user_basic_sal = 0;
+	
+	var user_EPF_contri_perc = parseInt(document.frm_epf.your_contribution.value);
+	if(isNaN(user_EPF_contri_perc)) user_EPF_contri_perc = 0;
+	
+	var employeer_EPF_contri_perc = parseInt(document.frm_epf.employers_contribuion.value);
+	if(isNaN(employeer_EPF_contri_perc)) employeer_EPF_contri_perc = 0;
+	
+	var _exp_annual_raise_perc = parseInt(document.frm_epf.annual_increase_in_salary.value);
+	if(isNaN(_exp_annual_raise_perc)) _exp_annual_raise_perc = 0;
+
+	var exp_retirement_age = parseInt(document.frm_epf.intend_to_retire.value);
+	if(isNaN(exp_retirement_age)) exp_retirement_age = 0;
+
+	var EPF_interest_rate_perc = parseInt(document.frm_epf.current_interest_rate.value);
+	if(isNaN(EPF_interest_rate_perc)) EPF_interest_rate_perc = 0;
+		
+	var past_EPF_balanace = parseInt(document.frm_epf.current_epf_balance.value);
+	if(isNaN(past_EPF_balanace)) past_EPF_balanace = 0;
+		
+	var rem_work_years = exp_retirement_age - user_age;
+	var user_basic_sal_annual = user_basic_sal * 12;			// Basic salary
+	for(y=1; y<=rem_work_years; y++)
+	{	
+		// NO raise or hike in 1st year
+		if(y ==1 )
+		{
+			var exp_annual_raise_perc = 0;
+		}
+		else
+		{
+			var exp_annual_raise_perc = _exp_annual_raise_perc;
+		}
+		
+		var inc_user_basic_sal_annual = (user_basic_sal_annual / 100) * exp_annual_raise_perc;		// annual increment
+		var inc_user_basic_sal_annual_total = user_basic_sal_annual + inc_user_basic_sal_annual;	// annualy increment salary
+
+		var annual_user_EPF_contri = (inc_user_basic_sal_annual_total * user_EPF_contri_perc) / 100;			// your ePF for the current year
+		var annual_employeer_EPF_contri = (inc_user_basic_sal_annual_total * employeer_EPF_contri_perc) / 100;	// employers ePF contribution for the current year
+
+		var annual_EPF_total = annual_user_EPF_contri + annual_employeer_EPF_contri;				// annual ePF collection
+
+		if(y == 1)
+		{
+			// balance funds for 1st year (if no, past ePF balance)
+			var balance_funds = annual_EPF_total + ((annual_EPF_total/100) * EPF_interest_rate_perc);
+			if(past_EPF_balanace > 0 && past_EPF_balanace != "")
+			// balance funds for 1st year (if it has past ePF balance)
+			var balance_funds = annual_EPF_total + past_EPF_balanace + (((annual_EPF_total + balance_funds) / 100) * EPF_interest_rate_perc);
+		}
+		else
+		{
+			// balance funds for rest of the years
+			var balance_funds = annual_EPF_total + last_balance_funds + (((annual_EPF_total + balance_funds) / 100) * EPF_interest_rate_perc);
+		}
+
+		var last_balance_funds = balance_funds;
+		var annual_EPF_total_interest = (annual_EPF_total / 100) * EPF_interest_rate_perc;			// ePF interest
+		var user_basic_sal_annual = inc_user_basic_sal_annual_total;
+	} // end of loop
+
+	balance_funds
+} 
