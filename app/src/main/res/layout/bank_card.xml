@@ -141,6 +141,22 @@
             android:textColor="@color/text_color"
             android:paddingLeft="10px"
             android:layout_gravity="center_vertical|center_horizontal" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/share"
+            android:id="@+id/shareit"
+            android:textColor="#ffffff"
+            android:layout_marginTop="0sp"
+            android:layout_marginLeft="0sp"
+            android:layout_marginRight="0sp"
+            android:typeface="serif"
+            />
     </LinearLayout>
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_BankCard"

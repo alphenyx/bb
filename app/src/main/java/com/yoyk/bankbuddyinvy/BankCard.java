@@ -8,7 +8,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -120,6 +122,15 @@ public class BankCard extends Activity  {
                 }
             }
         });
+
+        // share it
+        ImageButton btn_share=(ImageButton)findViewById(R.id.shareit);
+        btn_share.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                shareIt();
+            }
+        });
+
         mAdView = (AdView) findViewById(R.id.adView_BankCard);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
@@ -241,6 +252,21 @@ public class BankCard extends Activity  {
 
         }
         return false;
+    }
+
+    private void shareIt() {
+//sharing implementation here
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "BankBuddy");
+        if(!bankList_model.getBank_id().equalsIgnoreCase("100")) {
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Now check your Bank balance on a tap, click here to know more https://play.google.com/store/apps/details?id=com.yoyk.bankbuddyinvy ");
+        }
+        else
+        {
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Check your PF balance and see how much you save for your retirement, click here to know more https://play.google.com/store/apps/details?id=com.yoyk.bankbuddyinvy ");
+        }
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.SearchView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ShareActionProvider;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -90,12 +91,14 @@ public class Home extends AppCompatActivity implements SearchView.OnQueryTextLis
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setQueryHint("Search here");
     }
-
+    ShareActionProvider actionProvider;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        actionProvider = (ShareActionProvider) item.getActionProvider();
         return true;
     }
 
